@@ -2,10 +2,10 @@ const { exec } = require('child_process');
 
 console.log('Starting shell script execution');
 
-chainname = "test0001"
-address1 = "cosmos1qac3s3law0n8ck4rmtcezcs5we8des97pg3550" // alice
-address2 = "cosmos1nt3afyt8wy78ltc6cj232045pmugttepcgmzrx" // bob
-
+let chainname = "airhub"
+let address1 = "air1ve2e0ae8lzqn0a0upukwtujzdkt599p5rhl26j" // alice
+let address2 = "air1tgttczj6fsda2l02kkm5hl8wagyspzqlukr9sd" // bob
+let count = 0
 function executeShellScript() {
   const command = `cd ${chainname}; ${chainname}d tx bank send ${address1} ${address2} 10stack -y`;
   
@@ -15,10 +15,12 @@ function executeShellScript() {
       return;
     }
     
-    console.log('Shell script executed successfully');
+    count++
     console.log('Output:', stdout);
-    
-    setTimeout(executeShellScript, 2000); // Repeat execution every 2 seconds
+    console.log(`Transaction number ${count} done`)
+
+    if(count<1000)
+      setTimeout(executeShellScript, 2000); // Repeat execution every 2 seconds
   });
 }
 
