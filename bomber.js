@@ -2,14 +2,14 @@ const { exec } = require('child_process');
 
 console.log('Starting shell script execution');
 
-let chainname = "airhub"
-let address1 = "air1ve2e0ae8lzqn0a0upukwtujzdkt599p5rhl26j" // alice
-let address2 = "air1tgttczj6fsda2l02kkm5hl8wagyspzqlukr9sd" // bob
+let chainname = "noob"
+let address1 = "cosmos1lwzcrf95ejf5y0uhfda37drregwuy9ll2v8tnv" // alice
+let address2 = "cosmos1nzw8v705sxvqcd349nw3p830slttqmjxff5f4u" // bob
 let count = 0
-let transaction_to_do=1*1000*1000 // 1 million
+let transaction_to_do=1*100 // 1 million
 
 function executeShellScript() {
-  const command = `cd ${chainname}; ${chainname}d tx bank send ${address1} ${address2} 1stack -y`;
+  const command = ` ${chainname}d tx bank send ${address1} ${address2} 1stack -y`;
   
   exec(command, (error, stdout, stderr) => {
     if (error) {
@@ -22,7 +22,7 @@ function executeShellScript() {
     console.log(`Transaction number ${count} done`)
 
     if(count<transaction_to_do)
-      setTimeout(executeShellScript, 2000); // Repeat execution every 2 seconds
+      setTimeout(executeShellScript, 2000); // Repeat execution every 0.1 seconds
   });
 }
 
